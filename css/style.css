@@ -24,19 +24,20 @@ main{
     border-radius: 8px;
 }
 
-input{
+#input{
     width: 90%;
-    height: 45px;
+    height: 400px;
     margin: 16px 10px 0;
 
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 20px;
 
     text-align: right;
-    padding: 8px;
+    padding: 6px;
 
     border-radius: 7px;
+    background-color: #fff;
 }
 
 .keys-conteiner{

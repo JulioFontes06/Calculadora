@@ -7,27 +7,37 @@ const calc = document.getElementById('equal')
 
 
 clearInput.addEventListener('click', () => {
-    input.value = ''
+    input.innerText = ''
 })
 
 lastNumberDelet.addEventListener('click', () => {
-    input.value = input.value.slice(0, -1)
+    input.innerText = input.innerText.slice(0, -1)
 })
 
-let caracterOparation = ['/', 'x', '-', '.', '+']
+let caracterOperation = ['/', '*', '-', '.', '+']
 
 
 keyInput.forEach((key) => {
     key.addEventListener('click', () => {
-        input.value += key.dataset.key
+        const currentInput = input.innerText
+        const selectedKey = key.dataset.key
+        
+        let isOperationKey = caracterOperation.includes(currentInput.slice(-1))
+
+        if(caracterOperation.includes(selectedKey) && isOperationKey){
+            input.innerText = currentInput.slice(0, -1) + key.dataset.key
+            return
+        }
+
+        input.innerText += key.dataset.key
     })
 }
 )
 
 const calculate = () => {
-    let result = eval(input.value)
+    let result = eval(input.innerText)
 
-    input.value = result
+    input.innerText = result
 
 }
 
