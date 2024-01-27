@@ -6,15 +6,39 @@ body{
 
     width: 100%;
     height: 100vh;
+}
 
-    background-color: rgb(93, 141, 125);
+.light-theme-body{
+    background-color: #fdffff;
+}
+
+.dark-theme-body{
+    background-color: #363636;
+}
+
+#theme-change{
+    margin-bottom: 50px;
+    width: 100px;
+    height: 60px;
+
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.light-theme-change-button{
+    background-color: #f8f8f8;
+    color: #1f1f1f;
+}
+
+.dark-theme-change-button{
+    background-color: #1f1f1f;
+    color: #f1f1f1;
 }
 
 main{
     width: 90%;
     max-width: 300px;
     height: 440px;
-    background-color: rgb(63, 100, 100);
 
     display: flex;
     flex-direction: column;
@@ -24,7 +48,15 @@ main{
     border-radius: 8px;
 }
 
-#input{
+.light-theme-main{
+    background-color: #f1f1f1;
+}
+
+.dark-theme-main{
+    background-color: #9f9f9f;
+}
+
+.light-theme-input, .dark-theme-input{
     width: 90%;
     height: 400px;
     margin: 16px 10px 0;
@@ -37,7 +69,16 @@ main{
     padding: 6px;
 
     border-radius: 7px;
-    background-color: #fff;
+}
+
+.light-theme-input{
+    background-color: #f8f8f8;
+    color: #1f1f1f;
+}
+
+.dark-theme-input{
+    background-color: #1f1f1f;
+    color: #f1f1f1;
 }
 
 .keys-conteiner{
@@ -53,15 +94,28 @@ main{
     width: 60px;
     height: 60px;
 
-    background-color: #333;
-    color: #fff;
-
     border-radius: 8px;
+    cursor: pointer;
 }
 
-.key:hover{
-    cursor: pointer;
-    background-color: #333222;
+
+.light-theme-button{
+    background-color: #f8f8f8;
+    color: #1f1f1f;
+}
+
+.light-theme-button:hover{
+    
+    background-color: #dfdfdf;
+}
+
+.dark-theme-button{
+    background-color: #1f1f1f;
+    color: #ddd;
+}
+
+.dark-theme-button:hover{
+    background-color: #616161;
 }
 
 #zero{
