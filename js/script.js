@@ -1,97 +1,28 @@
-const input = document.getElementById('input')
-
-const keyInput = document.querySelectorAll('.keyNumber')
-const lastNumberDelet = document.getElementById('lastRemove')
-const clearInput = document.getElementById('remove')
-const calc = document.getElementById('equal')
+const lastNumberDelet = document.getElementById("lastRemove");
+const clearInput = document.getElementById("remove");
+const calc = document.getElementById("equal");
+const keyInput = document.querySelectorAll(".keyNumber");
 
 const changeTheme = document.getElementById('theme-change')
 
-const keyTheme = document.querySelectorAll('.key')
-const mainTheme = document.querySelector('main')
 
-changeTheme.addEventListener('click', () => {
-    const body = document.querySelector('body')
-        changeTheme.classList.toggle('dark-theme-change-button')
-        changeTheme.classList.toggle('light-theme-change-button')
-    
-        body.classList.toggle('dark-theme-body')
-        body.classList.toggle('light-theme-body')
+import { calculate } from "./math.js";
+import { keyEvent } from "./keyEvent.js";
+import { inputEvent, clearInputSection, clearLastElement } from "./inputEvents.js";
+import { themeAuteration } from "./themeChange.js";
 
-        mainTheme.classList.toggle('dark-theme-main')
-        mainTheme.classList.toggle('light-theme-main')
 
-        input.classList.toggle('dark-theme-input')
-        input.classList.toggle('light-theme-input')
+clearInput.addEventListener("click", clearInputSection);
 
-    keyTheme.forEach((key) => {
-        key.classList.toggle('light-theme-button')
-        key.classList.toggle('dark-theme-button')
-    })
-    
-})
+lastNumberDelet.addEventListener("click", clearLastElement);
 
-clearInput.addEventListener('click', () => {
-    input.innerText = ''
-})
+addEventListener("keydown", keyEvent);
 
-lastNumberDelet.addEventListener('click', () => {
-    input.innerText = input.innerText.slice(0, -1)
-})
-
-let caracterOperation = ['/', '*', '-', '.', '+']
-let alowedkey = ['/', '*', '-', '+', '.', '0', '1','2','3','4','5','6','7','8','9']
-
-addEventListener('keydown', (ev) => {
-    if(alowedkey.includes(ev.key)){
-        const currentInput = input.innerText
-        const selectedKey = ev.key
-        
-        let isOperationKey = caracterOperation.includes(currentInput.slice(-1))
-
-        if(caracterOperation.includes(selectedKey) && isOperationKey){
-            input.innerText = currentInput.slice(0, -1) + ev.key
-            return
-        }
-
-        input.innerText += ev.key
-    }
-
-    if(ev.key === 'Enter'){
-        calculate()
-    }
-
-    if(ev.key === 'Backspace'){
-        input.innerText = input.innerText.slice(0, -1)
-    }
-})
 
 keyInput.forEach((key) => {
-    key.addEventListener('click', () => {
-        const currentInput = input.innerText
-        const selectedKey = key.dataset.key
-        
-        let isOperationKey = caracterOperation.includes(currentInput.slice(-1))
+    key.addEventListener("click", inputEvent)
+});
 
-        if(caracterOperation.includes(selectedKey) && isOperationKey){
-            input.innerText = currentInput.slice(0, -1) + key.dataset.key
-            return
-        }
+calc.addEventListener("click", calculate);
 
-        input.innerText += key.dataset.key
-    })
-}
-)
-
-const calculate = () => {
-    let result = eval(input.innerText)
-
-    input.innerText = result
-
-}
-
-calc.addEventListener('click', calculate)
-
-
-
-
+changeTheme.addEventListener('click', themeAuteration)
